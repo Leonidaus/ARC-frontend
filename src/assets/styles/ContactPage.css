@@ -1,0 +1,293 @@
+
+.contact-container {
+    position: relative;
+    width: 100%;
+    overflow-x: hidden;
+  }
+  
+  .contact-hero {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .contact-hero-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .contact-hero-title {
+    font-size: 4rem;
+    font-weight: 700;
+    color: white;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .contact-running-track {
+    height: 4px;
+    background-color: #fff;
+    border-radius: 2px;
+    max-width: 80%;
+  }
+  
+  .contact-team-section {
+    position: relative;
+    padding: 6rem 2rem;
+    background-color: white;
+    z-index: 2;
+  }
+  
+  .contact-section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #333;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  
+  .contact-section-subtitle {
+    font-size: 1.2rem;
+    color: #666;
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  
+  .contact-carousel-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+  }
+  
+  .contact-carousel {
+    position: relative;
+    height: 400px;
+    width: 100%;
+    max-width: 800px;
+    overflow: visible;
+  }
+  
+  .contact-team-card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+  }
+  
+  @media (min-width: 768px) {
+    .contact-team-card {
+      flex-direction: row;
+    }
+  }
+  
+  .contact-image-container {
+    flex: 0 0 40%;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .contact-team-image {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    max-height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+  
+  .contact-team-info {
+    flex: 1;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .contact-team-name {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 0.5rem;
+  }
+  
+  .contact-team-role {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #666;
+    margin-bottom: 1rem;
+  }
+  
+  .contact-team-description {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.6;
+  }
+  
+  .contact-active {
+    transform: translateX(0);
+    opacity: 1;
+    z-index: 3;
+  }
+  
+  .contact-hidden-left {
+    transform: translateX(-100%) scale(0.8);
+    opacity: 0;
+    z-index: 1;
+  }
+  
+  .contact-hidden-right {
+    transform: translateX(100%) scale(0.8);
+    opacity: 0;
+    z-index: 1;
+  }
+  
+  .contact-hidden {
+    transform: translateX(200%);
+    opacity: 0;
+    z-index: 0;
+  }
+  
+  .contact-carousel-arrow {
+    background: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    z-index: 10;
+    margin: 0 1rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .contact-carousel-arrow:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  .contact-arrow-icon {
+    font-size: 1.5rem;
+  }
+  
+  .contact-info-section {
+    position: relative;
+    padding: 6rem 2rem;
+    z-index: 2;
+  }
+  
+  .contact-info-card {
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    padding: 3rem;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .contact-info-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #333;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .contact-info-details {
+    margin-bottom: 3rem;
+  }
+  
+  .contact-info-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+  }
+  
+  .contact-info-icon {
+    font-size: 1.5rem;
+    margin-right: 1rem;
+  }
+  
+  .contact-info-link {
+    color: #2563eb;
+    text-decoration: underline;
+    transition: color 0.3s ease;
+  }
+  
+  .contact-info-link:hover {
+    color: #1e40af;
+  }
+  
+  .contact-social-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+  }
+  
+  .contact-social-icon {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background-color: #2563eb;
+    color: white;
+    border-radius: 30px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+  }
+  
+  .contact-social-icon:hover {
+    background-color: #1e40af;
+    transform: translateY(-3px);
+  }
+  
+  /* Add these styles for better section transitions */
+.contact-container {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Ensure testimonials section has proper spacing */
+.testimonials-section {
+  position: relative;
+  z-index: 1;
+  margin: 4rem 0;
+}
+
+.contact-info-appear {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.contact-info-appear-active {
+  opacity: 1;
+  transform: translateY(0);
+}

@@ -1,0 +1,170 @@
+/* General reset and layout settings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #1a1a1a; /* dark background for a more sporty vibe */
+    color: white;
+    line-height: 1.6;
+}
+
+.contact-page {
+    padding: 40px;
+    text-align: center;
+    padding-top: 80px; /* Adds space to the top to prevent overlaying navbar */
+}
+
+/* Title Styling */
+h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.player-cards {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    gap: 20px;
+    overflow: hidden; /* Hides content outside the container for carousel effect */
+    position: relative;
+}
+
+.player-card {
+    background-color: #333; /* dark gray for contrast */
+    border-radius: 8px;
+    padding: 20px;
+    width: 250px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.player-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.player-card h2 {
+    font-size: 1.5rem;
+    color: #f4f4f4;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.player-card p {
+    font-size: 1rem;
+    margin: 8px 0;
+    color: #bbb;
+}
+
+.player-card a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.player-card a:hover {
+    color: #f4f4f4;
+}
+
+/* Left and Right Arrows for Carousel */
+.carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    font-size: 2rem;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    z-index: 2;
+}
+
+.carousel-arrow:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.carousel-left {
+    left: 10px;
+}
+
+.carousel-right {
+    right: 10px;
+}
+
+/* Responsive Design for Carousel */
+@media (max-width: 768px) {
+    .player-cards {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+.community-page {
+    display: flex;
+    flex-direction: row; /* Default: side by side */
+    justify-content: space-between;
+    align-items: stretch;
+    height: 100vh; /* Full viewport height */
+    padding: 100px;
+    gap: 20px; /* Space between panels */
+}
+
+.panel {
+    flex: 1; /* Each panel takes equal space */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px; /* Rounded borders for desktop */
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.panel:hover {
+    transform: scale(1.05); /* Slight zoom on hover */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Add shadow on hover */
+}
+
+.panel h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.panel p {
+    font-size: 1rem;
+    max-width: 80%;
+}
+
+/* Mobile View: Stack panels vertically */
+@media (max-width: 768px) {
+    .community-page {
+        flex-direction: column; /* Stack vertically */
+        height: auto; /* Allow height to grow with content */
+        padding-top: 100px; /* Add padding at the top */
+    }
+
+    .panel {
+        flex: none; /* Reset flex to allow full width */
+        height: 200px; /* Fixed height for mobile panels */
+        margin-bottom: 20px; /* Space between stacked panels */
+        border-radius: 0; /* Remove rounded borders for mobile */
+    }
+
+    .panel:last-child {
+        margin-bottom: 0; /* Remove margin for the last panel */
+    }
+}

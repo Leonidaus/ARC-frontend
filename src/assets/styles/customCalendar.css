@@ -1,0 +1,22 @@
+/* Make the calendar container bigger */
+.calendar-bulky {
+    font-size: 1.2rem; /* Increase font size */
+    padding: 10px;
+}
+
+/* Style the event markers inside calendar days */
+.calendar-event-marker {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(197, 80, 34, 0.2); /* Light green background */
+    border-radius: 5px;
+    padding: 2px;
+    margin-top: 5px;
+}
+
+.calendar-event {
+    font-size: 0.8rem;
+    color: #ff0000; /* Dark green */
+    font-weight: bold;
+}
