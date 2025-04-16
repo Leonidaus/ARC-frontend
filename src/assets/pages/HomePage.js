@@ -52,19 +52,19 @@ const getStartedFeatures = [
     step: "Connect",
     title: "Join the Community",
     content: "Connect with fellow runners and join local running groups.",
-    image: "/images/features/feat1.jpg"
+    image: "/images/features/feat1.png"
   },
   {
     step: "Train",
     title: "Start Training",
     content: "Access personalized training programs and track your progress.",
-    image: "/images/features/feat2.jpg"
+    image: "/images/features/feat2.png"
   },
   {
     step: "Compete",
     title: "Join Events",
     content: "Participate in events and challenge yourself with the community.",
-    image: "/images/features/feat3.jpg"
+    image: "/images/features/feat3.png"
   }
 ];
 
