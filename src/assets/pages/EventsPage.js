@@ -24,7 +24,7 @@ const useIsMobile = () => {
 
 const EventsPage = () => {
     const isMobile = useIsMobile();
-    const videoSrc = useState('/videos/running2.mp4');
+    const [videoSrc] = useState('/videos/running2.mp4');
     const [nextEvent, setNextEvent] = useState(null);
     const [events, setEvents] = useState([]);
 
@@ -102,6 +102,7 @@ const EventsPage = () => {
                 autoPlay
                 loop
                 muted
+                playsInline
                 style={{
                     position: 'absolute',
                     top: '0',
