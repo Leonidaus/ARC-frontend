@@ -164,6 +164,16 @@ h1 {
         border-radius: 0; /* Remove rounded borders for mobile */
     }
 
+    .panel h1 {
+        margin-bottom: 0.5rem;
+    }
+
+    .panel p {
+        max-width: 250px;
+        font-size: 0.875rem;
+        line-height: 1.25rem;
+    }
+
     .panel:last-child {
         margin-bottom: 0; /* Remove margin for the last panel */
     }

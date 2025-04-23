@@ -1,10 +1,26 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { LogoCarousel } from "../components/logo-carousel.tsx";
 import { GooeyText } from "../components/gradient-heading.tsx";
 import { FeatureSteps } from "../components/feature-section.tsx";
 import { Map, Users, Calendar } from "lucide-react";
 import { GlowingEffect } from "../components/glowing-effect";
+import HomePageMobile from "./HomePageMobile";
 
+const useIsMobile = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  return isMobile;
+};
 
 const GridItem = ({ icon, title, description }) => {
   return (
@@ -126,17 +142,24 @@ const ContentBox = ({ title, text, backgroundColor, opacity, offsetX, children }
 
 
 const RunningBackground = () => {
+
+  const isMobile = useIsMobile();
+  
+
+  // State to manage the current scene index
   const [sceneIndex, setSceneIndex] = useState(0);
   const totalScenes = 4;
   const offsetAmount = 100;
   const scrollCooldown = 1500;
-  let lastScrollTime = 0;
+  const lastScrollTimeRef = useRef(0);
 
   useEffect(() => {
+    if (isMobile) return;
+
     const handleScroll = (event) => {
       const now = Date.now();
-      if (now - lastScrollTime < scrollCooldown) return;
-      lastScrollTime = now;
+      if (now - lastScrollTimeRef.current < scrollCooldown) return;
+      lastScrollTimeRef.current = now;
 
       setSceneIndex((prevIndex) => {
         let newIndex = prevIndex;
@@ -153,7 +176,15 @@ const RunningBackground = () => {
     return () => {
       window.removeEventListener("wheel", handleScroll);
     };
-  }, []);
+  }, [isMobile]);
+
+  if (isMobile) {
+    return <HomePageMobile
+    logos={logos}
+    getStartedFeatures={getStartedFeatures}
+    GridItem={GridItem}
+    />;
+  }
 
   const scenes = [
       {

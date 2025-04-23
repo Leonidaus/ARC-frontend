@@ -2,10 +2,29 @@ import React, { useState, useEffect } from 'react';
 import EventCalendar from '../components/EventCalendar';
 import { motion } from 'framer-motion';
 import Countdown from 'react-countdown';
+import EventsPageMobile from './EventsPageMobile';
 import '../styles/EventsPage.css';
 
+// Mobile detection hook
+const useIsMobile = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  return isMobile;
+};
+
 const EventsPage = () => {
-    const [videoSrc, setVideoSrc] = useState('/videos/running2.mp4');
+    const isMobile = useIsMobile();
+    const videoSrc = useState('/videos/running2.mp4');
     const [nextEvent, setNextEvent] = useState(null);
     const [events, setEvents] = useState([]);
 
@@ -44,6 +63,17 @@ const EventsPage = () => {
         fetchEvents();
     }, []);
 
+    // If mobile, render mobile version
+    if (isMobile) {
+        return (
+            <EventsPageMobile 
+                events={events}
+                nextEvent={nextEvent}
+            />
+        );
+    }
+
+    // Desktop version continues here
     const renderCountdown = ({ days, hours, minutes, seconds }) => (
         <div className="countdown">
             <span>{days}D</span> <span>{hours}H</span> <span>{minutes}M</span> <span>{seconds}S</span>

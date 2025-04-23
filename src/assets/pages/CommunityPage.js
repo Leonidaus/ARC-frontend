@@ -1,10 +1,12 @@
 import React from 'react';
-import '../styles/CommunityPage.css'; // Ensure you create this CSS file
-import { GlowingEffect } from "../components/glowing-effect";
+import '../styles/CommunityPage.css';
+import { useIsMobile } from '../hooks/useIsMobile';
 
 const CommunityPage = () => {
+    const isMobile = useIsMobile();
+
     return (
-        <div className="community-page">
+        <div className={`community-page ${isMobile ? 'mobile' : ''}`}>
             <div
                 className="panel left-panel"
                 style={{
@@ -13,8 +15,8 @@ const CommunityPage = () => {
                 }}
                 onClick={() => window.open("https://www.strava.com/clubs/1236005", "_blank")}
             >
-                <h1>Strava</h1>
-                <p>Join our Strava club to discuss the latest activities and events.</p>
+                <h1 className="text-xl md:text-3xl lg:text-4xl">Strava</h1>
+                <p className="text-sm md:text-base">Join our Strava club to discuss the latest activities and events.</p>
             </div>
 
             <div
@@ -25,8 +27,8 @@ const CommunityPage = () => {
                 }}
                 onClick={() => window.open("https://community.example.com", "_blank")}
             >
-                <h1>Telegram</h1>
-                <p>Join our community forum to discuss the latest activities and events.</p>
+                <h1 className="text-xl md:text-3xl lg:text-4xl">Telegram</h1>
+                <p className="text-sm md:text-base">Join our community forum to discuss the latest activities and events.</p>
             </div>
 
             <div
@@ -37,8 +39,8 @@ const CommunityPage = () => {
                 }}
                 onClick={() => window.open("https://events.example.com", "_blank")}
             >
-                <h1>Instagram</h1>
-                <p>Check out our event calendar for upcoming events and activities.</p>
+                <h1 className="text-xl md:text-3xl lg:text-4xl">Instagram</h1>
+                <p className="text-sm md:text-base">Check out our event calendar for upcoming events and activities.</p>
             </div>
         </div>
     );
