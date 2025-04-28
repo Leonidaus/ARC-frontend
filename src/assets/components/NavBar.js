@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Menu, X } from "lucide-react";
+import Logo from "./logo";
 
 const NavBar = ({ setCurrentPage, currentPage }) => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -9,7 +10,7 @@ const NavBar = ({ setCurrentPage, currentPage }) => {
   };
 
   const handleShopClick = () => {
-    window.location.href = "https://holvi.com/shop/AALTORUNNINGCLUB/"; // Replace with the actual URL
+    window.location.href = "https://arcwebstore.com"; // Replace with the actual URL
   };
 
   return (
@@ -23,7 +24,9 @@ const NavBar = ({ setCurrentPage, currentPage }) => {
         </div>
 
         {/* Center - ARC Logo */}
-        <div className="nav-logo">ARC<span className="tm">TM</span></div>
+        <div className="nav-logo">
+          <Logo color={shouldUseDarkText() ? 'black' : 'white'} />
+        </div>
 
         {/* Right Side - Navigation Buttons (Hidden in Mobile) */}
         <div className="nav-items right desktop-only">
@@ -153,11 +156,12 @@ const NavBar = ({ setCurrentPage, currentPage }) => {
 
         /* ARC Logo */
         .nav-logo {
-          font-size: 18px;
-          font-weight: bold;
-              position: absolute; /* Position it absolutely within the container */
-              left: 50%; /* Move to the horizontal center */
-              transform: translateX(-50%); /* Adjust for the element's width */
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
 
         .tm {
@@ -165,6 +169,11 @@ const NavBar = ({ setCurrentPage, currentPage }) => {
           position: relative;
           top: -12px;
           margin-left: 3px;
+        }
+
+        .nav-logo-svg {
+          height: 24px;
+          width: auto;
         }
 
         /* Hamburger Button (Only Mobile) */

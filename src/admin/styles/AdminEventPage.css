@@ -4,113 +4,224 @@
     margin: 0 auto;
     padding: 20px;
     font-family: Arial, sans-serif;
+    color: white; /* Changed to white for default text */
 }
 
-h2, h3 {
-    color: #333;
+h2 {
+    color: white;
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    font-weight: 500;
 }
 
-/* Event Form */
-.event-form {
+h3 {
+    color: #333; /* Keep h3 dark for form sections with light backgrounds */
+    margin-bottom: 1rem;
+}
+
+/* Form Elements - Consistent Styling */
+.event-form,
+.modal {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    margin-bottom: 20px;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    background-color: #fff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-.event-form input {
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+.event-form label,
+.modal label {
+    font-weight: bold;
+    color: #444;
+    margin-bottom: -0.5rem; /* Reduce gap between label and input */
 }
 
-.event-form button {
-    padding: 10px;
-    font-size: 16px;
+.event-form input,
+.event-form textarea,
+.event-form select,
+.modal input {
+    padding: 0.75rem;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background-color: #fff;
+    color: #333; /* Ensure text is visible */
+    transition: border-color 0.2s;
+}
+
+.event-form input:focus,
+.event-form textarea:focus,
+.event-form select:focus,
+.modal input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.event-form textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+/* Button Styling - Consistent across all components */
+button {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.primary-btn {
     background-color: #007bff;
     color: white;
+}
+
+.primary-btn:hover {
+    background-color: #0069d9;
+}
+
+.secondary-btn {
+    background-color: #6c757d;
+    color: white;
+}
+
+.secondary-btn:hover {
+    background-color: #5a6268;
+}
+
+.danger-btn {
+    background-color: #dc3545;
+    color: white;
+}
+
+.danger-btn:hover {
+    background-color: #c82333;
+}
+
+.success-btn {
+    background-color: #28a745;
+    color: white;
+}
+
+.success-btn:hover {
+    background-color: #218838;
+}
+
+.warning-btn {
+    background-color: #ffc107;
+    color: #212529;
+}
+
+.warning-btn:hover {
+    background-color: #e0a800;
+}
+/* Button Styling */
+.event-form button,
+.modal button {
+    background-color: #f0f0f0;
+    color: black;
+    padding: 10px 20px;
     border: none;
-    border-radius: 5px;
+    border-radius: 4px;
     cursor: pointer;
+    font-weight: 500;
+    margin-top: 1rem;
+    transition: background-color 0.2s ease;
 }
 
-.event-form button:hover {
-    background-color: #0056b3;
+.event-form button:hover,
+.modal button:hover {
+    background-color: #e0e0e0;
 }
 
-/* Search Bar */
+/* Style for cancel button */
+.event-form button:last-child,
+.modal button:last-child {
+    background-color: #ff4444;
+    color: white;
+    margin-left: 10px;
+}
+
+.event-form button:last-child:hover,
+.modal button:last-child:hover {
+    background-color: #cc0000;
+}
+
+/* Search Section Styles */
 .event-search {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 2rem;
+}
+
+.event-search h3 {
+    color: white;
+    margin-bottom: 1rem;
 }
 
 .event-search input {
-    flex: 1;
-    padding: 10px;
-    font-size: 16px;
+    background-color: white;
+    color: black;
+    padding: 8px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 4px;
+    width: 200px;
+    margin-right: 1rem;
+}
+
+.event-search input::placeholder {
+    color: #666;
 }
 
 .event-search button {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #28a745;
+    background-color: #4a90e2;
     color: white;
+    padding: 8px 16px;
     border: none;
-    border-radius: 5px;
+    border-radius: 4px;
     cursor: pointer;
 }
 
 .event-search button:hover {
-    background-color: #218838;
+    background-color: #357abd;
 }
 
 /* Event List */
 .event-list {
     list-style: none;
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
 .event-card {
-    padding: 15px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-    margin-bottom: 10px;
-    color: black;
+    padding: 1.5rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
 
 .event-card h4 {
-    margin: 0 0 10px;
+    margin: 0 0 0.75rem;
+    color: #222;
+    font-size: 1.25rem;
 }
 
 .event-card p {
-    margin: 5px 0;
+    margin: 0.5rem 0;
+    color: #555;
+    line-height: 1.5;
 }
 
-.event-card button {
-    margin-right: 10px;
-    padding: 5px 10px;
-    font-size: 14px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.event-card button:first-of-type {
-    background-color: #ffc107;
-}
-
-.event-card button:last-of-type {
-    background-color: #dc3545;
-    color: white;
-}
-
-.event-card button:hover {
-    opacity: 0.8;
+.event-card .event-actions {
+    margin-top: 1rem;
+    display: flex;
+    gap: 0.75rem;
 }
 
 /* Modal Styling */
@@ -124,42 +235,47 @@ h2, h3 {
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 1000;
 }
 
 .modal {
-    background: white;
-    padding: 20px;
+    background: #fff;
+    padding: 1.5rem;
     border-radius: 8px;
-    width: 400px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
 }
 
 .modal h3 {
     margin-top: 0;
+    color: #222;
 }
 
-.modal input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+.modal .modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    margin-top: 1rem;
 }
 
-.modal button {
-    margin-right: 10px;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+/* Utility Classes */
+.datetime-group {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
 }
 
-.modal button:first-of-type {
-    background-color: #007bff;
-    color: white;
+.datetime-group div {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 }
 
-.modal button:last-of-type {
-    background-color: #dc3545;
-    color: white;
+/* Fix for white text issue */
+.event-form textarea,
+.event-card,
+.modal {
+    color: #333 !important; /* Force black text */
 }

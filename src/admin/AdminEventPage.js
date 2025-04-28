@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import './styles/AdminEventPage.css';
 
 const AdminEventPage = () => {
@@ -12,9 +12,20 @@ const AdminEventPage = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isEditing, setIsEditing] = useState(false);
 
+    const handleSearchEvents = useCallback(async () => {
+        try {
+            const response = await fetch(`${API_URL}/events?search=${searchQuery}`);
+            const data = await response.json();
+            setEvents(data.data || []);
+        } catch (error) {
+            console.error('Error searching events:', error);
+        }
+    }, [API_URL, searchQuery]); // Add dependencies
+
+    // Now useEffect will work properly
     useEffect(() => {
         handleSearchEvents();
-    }, []);
+    }, [handleSearchEvents]);
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -68,15 +79,6 @@ const AdminEventPage = () => {
         }
     };
 
-    const handleSearchEvents = async () => {
-        try {
-            const response = await fetch(`${API_URL}/events?search=${searchQuery}`);
-            const data = await response.json();
-            setEvents(data.data || []);
-        } catch (error) {
-            console.error('Error searching events:', error);
-        }
-    };
 
     const resetForm = () => {
         setFormData({
@@ -104,16 +106,108 @@ const AdminEventPage = () => {
             {/* Add Event Form */}
             <div className="event-form">
                 <h3>{isEditing ? 'Edit Event' : 'Add Event'}</h3>
-                <input type="text" name="name" placeholder="Name" value={formData.name} onChange={handleChange} />
-                <input type="text" name="description" placeholder="Description" value={formData.description} onChange={handleChange} />
-                <input type="text" name="location" placeholder="Location" value={formData.location} onChange={handleChange} />
-                <input type="date" name="startDate" value={formData.startDate} onChange={handleChange} />
-                <input type="time" name="startTime" value={formData.startTime} onChange={handleChange} />
-                <input type="date" name="endDate" value={formData.endDate} onChange={handleChange} />
-                <input type="time" name="endTime" value={formData.endTime} onChange={handleChange} />
-                <input type="text" name="organizer" placeholder="Organizer" value={formData.organizer} onChange={handleChange} />
-                <input type="text" name="eventType" placeholder="Event Type" value={formData.eventType} onChange={handleChange} />
-                <input type="text" name="registrationUrl" placeholder="Registration URL" value={formData.registrationUrl} onChange={handleChange} />
+
+                <label>Event Name</label>
+                <input
+                    type="text"
+                    name="name"
+                    placeholder="e.g., 'Sunday Long Run', 'Annual 5K Race'"
+                    value={formData.name}
+                    onChange={handleChange}
+                />
+
+                <label>Description</label>
+                <textarea
+                    name="description"
+                    placeholder="Details about the run (pace, distance, route)..."
+                    value={formData.description}
+                    onChange={handleChange}
+                    rows="3"
+                />
+
+                <label>Location</label>
+                <input
+                    type="text"
+                    name="location"
+                    placeholder="e.g., 'City Park, Trailhead Entrance'"
+                    value={formData.location}
+                    onChange={handleChange}
+                />
+
+                <div className="datetime-group">
+                    <div>
+                        <label>Start Date</label>
+                        <input
+                            type="date"
+                            name="startDate"
+                            value={formData.startDate}
+                            onChange={handleChange}
+                        />
+                    </div>
+                    <div>
+                        <label>Start Time</label>
+                        <input
+                            type="time"
+                            name="startTime"
+                            value={formData.startTime}
+                            onChange={handleChange}
+                        />
+                    </div>
+                </div>
+
+                <div className="datetime-group">
+                    <div>
+                        <label>End Date</label>
+                        <input
+                            type="date"
+                            name="endDate"
+                            value={formData.endDate}
+                            onChange={handleChange}
+                        />
+                    </div>
+                    <div>
+                        <label>End Time</label>
+                        <input
+                            type="time"
+                            name="endTime"
+                            value={formData.endTime}
+                            onChange={handleChange}
+                        />
+                    </div>
+                </div>
+
+                <label>Organizer</label>
+                <input
+                    type="text"
+                    name="organizer"
+                    placeholder="e.g., 'John Doe', 'City Runners Club'"
+                    value={formData.organizer}
+                    onChange={handleChange}
+                />
+
+                <label>Event Type</label>
+                <select
+                    name="eventType"
+                    value={formData.eventType}
+                    onChange={handleChange}
+                >
+                    <option value="">Select type</option>
+                    <option value="Group Run">Group Run</option>
+                    <option value="Race">Race</option>
+                    <option value="Training Session">Training Session</option>
+                    <option value="Club Meetup">Club Meetup</option>
+                    <option value="Fun Run">Fun Run</option>
+                </select>
+
+                <label>Registration URL</label>
+                <input
+                    type="url"
+                    name="registrationUrl"
+                    placeholder="e.g., https://signup.runningclub.com/event123"
+                    value={formData.registrationUrl}
+                    onChange={handleChange}
+                />
+
                 <button onClick={isEditing ? handleEditEvent : handleAddEvent}>
                     {isEditing ? 'Update Event' : 'Add Event'}
                 </button>
