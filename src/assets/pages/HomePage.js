@@ -22,6 +22,13 @@ const useIsMobile = () => {
   return isMobile;
 };
 
+const preloadImages = (imageUrls) => {
+  imageUrls.forEach(url => {
+    const img = new Image();
+    img.src = url;
+  });
+};
+
 const GridItem = ({ icon, title, description }) => {
   return (
     <li className="min-h-[14rem] list-none">
@@ -154,6 +161,13 @@ const RunningBackground = () => {
   const lastScrollTimeRef = useRef(0);
 
   useEffect(() => {
+    // Preload all feature images
+    const imagesToPreload = getStartedFeatures.map(feature => feature.image);
+    preloadImages(imagesToPreload);
+  }, []); // Empty dependency array means this runs once on component mount
+  
+
+  useEffect(() => {
     if (isMobile) return;
 
     const handleScroll = (event) => {
@@ -212,6 +226,7 @@ const RunningBackground = () => {
               autoPlayInterval={4000}
               imageHeight="h-[300px]"
               className="bg-transparent text-white"
+              loading="eager"
             />
           </div>
         ),
