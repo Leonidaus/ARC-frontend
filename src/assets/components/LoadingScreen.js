@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { preloadAllAssets } from "./util/assetPreloader";
+import Logo from "./logo";
 
 const LoadingScreen = ({ onFinish }) => {
   const [progress, setProgress] = useState(0);
@@ -89,16 +90,9 @@ const LoadingScreen = ({ onFinish }) => {
         />
       </svg>
 
-      <div style={{
-        position: "absolute", fontSize: "1.5rem", fontWeight: "bold", textAlign: "center"
-      }}>
-        ARC
-        <span style={{
-          fontSize: "0.75rem", position: "relative", top: "-12px", marginLeft: "4px"
-        }}>
-          TM
-        </span>
-      </div>
+      <div className="nav-logo">
+          <Logo color="white" />
+        </div>
     </div>
   );
 };
